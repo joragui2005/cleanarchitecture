@@ -18,7 +18,7 @@ namespace CleanArchitecture.Application.Features.Category.Querys.GetCategoriesLi
 
         public async Task<List<CategoryVm>> Handle(GetCategoriesListQuery request, CancellationToken cancellationToken)
         {
-            var categories = await _categoryRepository.GetCategoryByUsername(request.Id);
+            var categories = await _categoryRepository.GetCategoryById(request.Id);
 
             return _mapper.Map<List<CategoryVm>>(categories);
         }

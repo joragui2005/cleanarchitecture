@@ -6,6 +6,6 @@ namespace CleanArchitecture.Application.Contracts.Persistence
     public interface ICategoryRepository : IAsyncRepository<Category>
     {
         Task<Category> GetCategoryByName(string name);
-        Task<IEnumerable<Category>> GetCategoryByUsername(string username);
+        Task<IEnumerable<Category>> GetCategoryById(int id);
     }
 }

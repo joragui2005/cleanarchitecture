@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CleanArchitecture.Presentation.Controllers
 {
     [ApiController]
-    [Route("api/v1/[cotroller]")]
+    [Route("api/v1/[controller]")]
     public class ItemController : ControllerBase
     {
         private readonly IMediator _mediator;

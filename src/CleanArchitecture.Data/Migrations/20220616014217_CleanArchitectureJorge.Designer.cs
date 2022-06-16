@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CleanArchitecture.Data.Migrations
 {
     [DbContext(typeof(CategoryDbContext))]
-    [Migration("20220613154539_BaseModel")]
-    partial class BaseModel
+    [Migration("20220616014217_CleanArchitectureJorge")]
+    partial class CleanArchitectureJorge
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
