@@ -6,6 +6,7 @@ namespace CleanArchitecture.Application.Contracts.Persistence
     public interface IAsyncRepository<T> where T : BaseDomainModel
     {
         Task<IReadOnlyList<T>> GetAllAsync();
+
         Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicated);
 
         Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>>? predicated = null,

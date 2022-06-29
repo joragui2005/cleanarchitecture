@@ -13,7 +13,6 @@
   <ItemGroup>
     <Folder Include="Contracts\Infrastructure\" />
     <Folder Include="Features\Category\Commands\" />
-    <Folder Include="Features\Item\Querys\" />
   </ItemGroup>
 
   <ItemGroup>

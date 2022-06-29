@@ -2,6 +2,7 @@ using CleanArchitecture.Application;
 using CleanArchitecture.Data;
 using CleanArchitecture.Domain;
 using CleanArchitecture.Infrastructure;
+using CleanArchitecture.Presentation.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +25,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 

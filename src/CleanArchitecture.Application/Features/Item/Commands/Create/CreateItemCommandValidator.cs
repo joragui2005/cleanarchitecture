@@ -8,14 +8,14 @@ namespace CleanArchitecture.Application.Features.Item.Commands.Create
         {
             RuleFor(e => e.Amount)
                 .NotEmpty().WithMessage("The amount is required")
-                .LessThan(0).WithMessage("The amount is gt 0");
+                .GreaterThan(0).WithMessage("The amount is gt 0");
 
             RuleFor(e => e.Description)
                 .NotEmpty().WithMessage("Description is mandatory");
 
             RuleFor(e => e.Price)
-                .LessThan(0).WithMessage("The price is gt 0")
-                .GreaterThan(1000000).WithMessage("The price is insane $$$$$");
+                .GreaterThan(0).WithMessage("The price is gt 0")
+                .LessThan(1000000).WithMessage("The price is insane $$$$$");
         }
     }
 }

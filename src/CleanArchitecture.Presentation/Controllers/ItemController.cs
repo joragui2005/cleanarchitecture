@@ -1,7 +1,10 @@
 ﻿using System.Net;
+using CleanArchitecture.Application.Features.Category.Querys.GetCategoriesList;
 using CleanArchitecture.Application.Features.Item.Commands.Create;
 using CleanArchitecture.Application.Features.Item.Commands.Delete;
 using CleanArchitecture.Application.Features.Item.Commands.Update;
+using CleanArchitecture.Application.Features.Item.Querys.GetItemsList;
+using CleanArchitecture.Domain;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +19,26 @@ namespace CleanArchitecture.Presentation.Controllers
         public ItemController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+        [HttpGet("", Name = "GetItems")]
+        [ProducesResponseType(typeof(IEnumerable<Item>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<Item>>> GetItems()
+        {
+            var query = new GetItemsListQuery();
+            var items = await _mediator.Send(query);
+
+            return Ok(items);
+        }
+
+        [HttpGet("{id}", Name = "GetItemById")]
+        [ProducesResponseType(typeof(IEnumerable<Item>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<Item>>> GetItemById(int id)
+        {
+            var query = new GetItemsListQuery(id);
+            var items = await _mediator.Send(query);
+
+            return Ok(items);
         }
 
         [HttpPost(Name = "CreateItem")]
