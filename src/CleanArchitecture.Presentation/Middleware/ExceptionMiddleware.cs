@@ -36,6 +36,8 @@ namespace CleanArchitecture.Presentation.Middleware
                 {
                     case NotFoundException notFoundException:
                         statusCode = StatusCodes.Status404NotFound;
+                        var notFoundJson = JsonConvert.SerializeObject(notFoundException);
+                        result = JsonConvert.SerializeObject(new CodeErrorException(statusCode, e.Message, notFoundJson));
                         break;
                     case ValidationException validationException:
                         statusCode = StatusCodes.Status400BadRequest;
@@ -44,13 +46,15 @@ namespace CleanArchitecture.Presentation.Middleware
                         break;
                     case BadRequestException badRequestException:
                         statusCode = StatusCodes.Status400BadRequest;
+                        var badRequestJson = JsonConvert.SerializeObject(badRequestException);
+                        result = JsonConvert.SerializeObject(new CodeErrorException(statusCode, e.Message, badRequestJson));
                         break;
                     default:
                         break;
                 }
 
                 if (string.IsNullOrEmpty(result))
-                    result = JsonConvert.SerializeObject(new CodeErrorException(statusCode, e.Message, e.StackTrace));
+                    result = JsonConvert.SerializeObject(new CodeErrorException(statusCode, e.Message, e.InnerException.Message ?? e.Message));
 
                 context.Response.StatusCode = statusCode;
 

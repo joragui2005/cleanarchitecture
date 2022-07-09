@@ -49,6 +49,8 @@ namespace CleanArchitecture.Infrastructure.Persistence
                 .HasForeignKey(m => m.CategoryId) // En caso de que se haya declarado con otro nombre
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Item>()
+                .HasOne(m => m.Category);
         }
     }
 }

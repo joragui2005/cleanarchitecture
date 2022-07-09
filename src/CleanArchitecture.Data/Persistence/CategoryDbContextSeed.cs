@@ -24,9 +24,9 @@ namespace CleanArchitecture.Infrastructure.Persistence
         {
             return new List<Category>
             {
-                new Category { Name = "Category One", Url = "http://category.one"},
-                new Category { Name = "Category Two", Url = "http://category.two"},
-                new Category { Name = "Category Three", Url = "http://category.three"}
+                new Category { Name = "Category One", Url = "http://category.one", ParentCategory = 0},
+                new Category { Name = "Category Two", Url = "http://category.two", ParentCategory = 0},
+                new Category { Name = "Category Three", Url = "http://category.three", ParentCategory = 0}
             };
         }
     }

@@ -41,6 +41,16 @@ namespace CleanArchitecture.Presentation.Controllers
             return Ok(items);
         }
 
+        [HttpGet("category/{name}", Name = "GetItemFilter")]
+        [ProducesResponseType(typeof(IEnumerable<Item>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<Item>>> GetItemFilter(string name)
+        {
+            var query = new GetItemsListQuery(name);
+            var items = await _mediator.Send(query);
+
+            return Ok(items);
+        }
+
         [HttpPost(Name = "CreateItem")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<ActionResult<int>> CreateItem([FromBody] CreateItemCommand command)

@@ -18,6 +18,8 @@ namespace CleanArchitecture.Infrastructure
             services.AddDbContext<CategoryDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("Default")));
 
+            // services.AddScoped<IAsyncRepository, RepositoryBase>();
+            // We can't use this AddScoped because we must to specified the type of service and implementation in Generics
             services.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>));
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IItemRepository, ItemRepository>();
